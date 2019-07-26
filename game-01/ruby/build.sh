@@ -1,0 +1,1 @@
+docker build -t ruby-solution-script .

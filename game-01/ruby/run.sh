@@ -1,0 +1,1 @@
+ docker run -it --name running-script ruby-solution-script
