@@ -1,1 +1,1 @@
- docker run -it --name running-script ruby-solution-script
+ docker run -it --rm --name running-script -v "$PWD":/solution -w /solution ruby:2.5 ruby ruby_solution_test.rb
