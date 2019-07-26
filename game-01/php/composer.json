@@ -1,0 +1,12 @@
+{
+    "name": "joel/game01",
+    "authors": [
+        {
+            "name": "joel ibaceta",
+            "email": "mail@joelibaceta.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
