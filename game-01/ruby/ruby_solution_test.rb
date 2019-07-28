@@ -4,6 +4,8 @@ require_relative 'ruby_solution'
  
 class Game01Test < Test::Unit::TestCase
 
+    include Solver
+
     @@cases = YAML.load_file("#{__dir__}/cases.yaml")
 
     def test_reduce_way

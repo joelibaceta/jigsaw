@@ -1,2 +1,4 @@
 .DS_Store
 .idea
+game-01/php/vendor
+.lock
