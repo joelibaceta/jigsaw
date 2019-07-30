@@ -21,3 +21,40 @@ Be sure to answer this question by outlining the concepts used to tackle the pro
 ## Solution
 
 ![image](images/Architecture.svg)
+
+**Patterns Used:**
+
+- State
+- Observer
+- Builder
+- ChainOfResponsability
+
+> **Notes**
+> - I choose a SocketServer instead of HttpWebServer to avoid frontend pooling to know if the transaction is already processed.
+> - I use a queue to keep waiting all the requests to exceds the 10 request processing limit instead of cancel the request or return a "server busy" message.
+> - I'm trying to be technology agnostic.
+> - I'm using a closure approach to save the callbacks context reducing the dependencies.
+
+**Using Sample**
+
+```php
+
+// WTF Service
+
+defaultAction($message, $connection) {
+
+    $request = $this->parseRequest($message);
+
+    $request->onPendingCallback = function ($request) {
+        $connection->sendMessage("Your request has been processing");
+    }
+
+    $request->onSuccess = function ($request) {
+        $connection->sendMessage($request.body);
+    }
+
+    $provider->doRequest($request);
+
+}
+
+```
