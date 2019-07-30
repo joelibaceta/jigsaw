@@ -18,7 +18,7 @@ class Solver
     }
 
     // Run the main method
-    public function run($m, $n) : array
+    public function run(array $m, int $n) : array
     {
         return $this->strategy->solve($m, $n);
     }

@@ -10,6 +10,7 @@ class Game01Test extends TestCase
 {   
     private $cases;
 
+    // Loading Tests Cases from file
     function setUp()
     {
         $data = file_get_contents(__DIR__ . '/cases.json'); 
@@ -28,6 +29,7 @@ class Game01Test extends TestCase
         $this->assertFromData($solver);
     }
 
+    // Running Tests using Data Driven Testing
     private function assertFromData($solver)
     {
         foreach ($this->cases as $case) {

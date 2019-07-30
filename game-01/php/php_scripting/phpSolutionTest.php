@@ -8,6 +8,7 @@ class Game01Test extends TestCase
 {
     protected $cases;
 
+    // Loading Tests Cases from file
     function setUp()
     {
         $data = file_get_contents(__DIR__ . '/cases.json');
@@ -24,9 +25,9 @@ class Game01Test extends TestCase
         $this->assertFromData("RecursiveWay");
     }
 
+    // Running Tests using Data Driven Testing
     private function assertFromData($callableMethod)
     {
-        
         foreach ($this->cases as $case) {
             $result = $callableMethod($case["m"], $case["n"]);
             $this->assertEquals($result, $case["solution"]);

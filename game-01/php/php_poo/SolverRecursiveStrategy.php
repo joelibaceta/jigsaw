@@ -4,8 +4,16 @@ require_once "iSolverStrategy.php";
 
 class SolverRecursiveStrategy implements ISolverStrategy {
 
-    // Solve using a recursive strategy
-    public function solve($m, $n): array {
+    /**
+     *
+     * Solve using a recursive strategy
+     *
+     * @param array $m Set of integer numbers
+     * @param int   $n Expected sum
+     *
+     * @return array
+     */
+    public function solve(array $m, int $n): array {
         
         $current = current($m);
         $next = next($m); 
