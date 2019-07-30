@@ -28,7 +28,7 @@ class Game01Test extends TestCase
     {
         
         foreach ($this->cases as $case) {
-            $result =Solver::$callableMethod($case["m"], $case["n"]);
+            $result = $callableMethod($case["m"], $case["n"]);
             $this->assertEquals($result, $case["solution"]);
         }
     }
