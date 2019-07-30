@@ -5,3 +5,7 @@ For instance, let's say we've got a set of number [5, 2, 8, 14, 0] and N = 10, t
 
 ## Challenge
 You're required to create a function that receives an array (M) and integer value (N), this function has to return an array of the first possible solution
+
+## Solution Notes
+
+To run the test suite you need docker and run the `run.sh` file in each language directory.
