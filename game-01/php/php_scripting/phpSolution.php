@@ -6,29 +6,28 @@
 
 // A simple iteration method
 function IterationWay($m, $n) {
-    for ($i = 0; $i < (count($m) - 1); $i++) {
-        if ($m[$i] + $m[$i+1] == $n) {
-            return array($m[$i], $m[$i+1]);
+    for ($i = 0; $i < count($m); $i++) {
+        for ($j = $i+1; $j < count($m); $j++) {
+            if ($m[$i] + $m[$j] == $n) {
+                return array($m[$i], $m[$j]);
+            }
         }
     }
-    return null;
+    return [];
 }
 
 // A recursive version
-function RecursiveWay($m, $n) {
-    $current = current($m);
-    $next = next($m);
-
-    if ($next) {
-        if ($current + $next == $n ) { 
-            return array($current, $next);
-        } else {
-            return RecursiveWay($m, $n);
+function RecursiveWay($m, $n, $index=0) {
+    if ($index == count($m)-1){
+        return [];
+    } else {
+        for ($i = ($index + 1); $i < count($m); $i++) {
+            if ($m[$index] + $m[$i] == $n) {
+                return array($m[$index], $m[$i]);
+            }
         }
+        return RecursiveWay($m, $n, $index+1);
     }
-    return null;
 }
-
-
 
 ?>

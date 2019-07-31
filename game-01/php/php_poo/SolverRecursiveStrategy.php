@@ -13,19 +13,18 @@ class SolverRecursiveStrategy implements ISolverStrategy {
      *
      * @return array
      */
-    public function solve(array $m, int $n): array {
+    public function solve(array $m, int $n, int $index = 0): array {
         
-        $current = current($m);
-        $next = next($m); 
-
-        if ($next) {
-            if ($current + $next == $n ) { 
-                return array($current, $next);
-            } else {
-                return $this->solve($m, $n);
-            } 
+        if ($index == count($m)-1){
+            return [];
+        } else {
+            for ($i = ($index + 1); $i < count($m); $i++) {
+                if ($m[$index] + $m[$i] == $n) {
+                    return array($m[$index], $m[$i]);
+                }
+            }
+            return $this->solve($m, $n, $index+1);
         }
-        return []; 
     }
 
 }

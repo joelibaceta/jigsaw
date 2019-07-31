@@ -14,9 +14,11 @@ class SolverClassicStrategy implements ISolverStrategy {
      * @return array
      */
     function solve(array $m, int $n): array {
-        for ($i = 0; $i < (count($m) - 1); $i++) {
-            if ($m[$i] + $m[$i+1] == $n) {
-                return array($m[$i], $m[$i+1]);
+        for ($i = 0; $i < count($m); $i++) {
+            for ($j = $i+1; $j < (count($m) - 1); $j++) {
+                if ($m[$i] + $m[$j] == $n) {
+                    return array($m[$i], $m[$j]);
+                }
             }
         }
         return [];

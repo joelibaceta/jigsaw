@@ -19,9 +19,11 @@ module Solver
     # Return nil if don't find a solution
     #
     def iteration_way(m, n)
-        (0..(m.count - 2)).each do |i|
-            if (m[i] + m[i+1] == n)
-                return [m[i], m[i+1]]
+        (0..(m.count - 1)).each do |i|
+            ((i+1)..(m.count - 1)).each do |j|
+                if (m[i] + m[j] == n)
+                    return [m[i], m[j]]
+                end
             end
         end
         return nil
@@ -33,8 +35,9 @@ module Solver
     # Return nil if don't find a solution
     #
     def iteration_way_min(m, n)
-        (0..(m.count-2)).each {|i| 
-            (return [m[i], m[i+1]]) if (m[i]+m[i+1] == n)}
+        (0..(m.count-1)).each {|i| 
+            ((i+1)..(m.count-1)).each {|j| 
+                (return [m[i], m[j]]) if (m[i]+m[j] == n)}}
         return nil
     end
 
@@ -45,12 +48,13 @@ module Solver
     # Return nil if don't find a solution
     #
     def reduce_way(m, n)
-        m.reduce(0) do |last, i| 
-            if last+i == n 
-                return [last, i]
-            else
-                last = i
+        m.reduce(0) do |index, i| 
+            m.drop(index+1).each do |j|
+                if (i + j) == n
+                    return [i, j]
+                end
             end
+            index +=1
         end
         return nil
     end
@@ -61,7 +65,7 @@ module Solver
     # Return nil if don't find a solution
     #
     def reduce_way_min(m, n)
-        m.reduce(0) { |l, i|  l+i == n ? (return [l, i]) : l = i }
+        m.reduce(0) { |i, x| m.drop(i+1).each {|y| return [x, y] if (x + y) == n }; i +=1 }
         return nil
     end
 end
