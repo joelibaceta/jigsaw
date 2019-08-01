@@ -17,3 +17,54 @@ A service named YOLO synchronously calls an API named WTF. WTF tends to be very 
 You're required to design an architecture using design patterns that allow YOLO to find out when WTF is having trouble processing requests. Ideally, this architecture should let YOLO know when to stop issuing calls to WTF until WTF is available again.
 
 Be sure to answer this question by outlining the concepts used to tackle the problem, as well as all meaningful interactions between the architecture's components. No programming is required!
+
+## Solution
+
+# Classes Diagram
+
+![image](images/Architecture.svg)
+
+# Request Flow Diagram
+
+![image](images/bpmn.svg)
+
+# Request Physical Diagram
+
+![image](images/physical.svg)
+
+**Patterns Used:**
+
+- State
+- Observer
+- Builder
+- ChainOfResponsability
+
+> **Notes**
+> - I choose a SocketServer instead of HttpWebServer to avoid frontend pooling to know if the transaction is already processed.
+> - I use a queue to keep waiting all the requests to exceds the 10 request processing limit instead of cancel the request or return a "server busy" message.
+> - I'm trying to be technology agnostic.
+> - I'm using a closure approach to save the callbacks context reducing the dependencies.
+
+**Using Sample**
+
+```php
+
+// WTF Service
+
+defaultAction($message, $connection) {
+
+    $request = $this->parseRequest($message);
+
+    $request->onPendingCallback = function ($request) {
+        $connection->sendMessage("Your request has been processing");
+    }
+
+    $request->onSuccess = function ($request) {
+        $connection->sendMessage($request.body);
+    }
+
+    $provider->doRequest($request);
+
+}
+
+```
