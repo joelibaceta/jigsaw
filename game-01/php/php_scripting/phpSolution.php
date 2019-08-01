@@ -6,8 +6,11 @@
 
 // A simple iteration method
 function IterationWay($m, $n) {
+
+    $m = array_values(array_filter($m, function ($x) use ($n) { return $x <= $n; }));
+
     for ($i = 0; $i < count($m); $i++) {
-        for ($j = $i+1; $j < count($m); $j++) {
+        for ($j = $i+1; $j < count($m) - 1; $j++) {
             if ($m[$i] + $m[$j] == $n) {
                 return array($m[$i], $m[$j]);
             }
