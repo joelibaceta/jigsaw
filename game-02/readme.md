@@ -20,7 +20,12 @@ Be sure to answer this question by outlining the concepts used to tackle the pro
 
 ## Solution
 
-![image](images/Architecture.svg)
+![image](images/architecture.svg)
+
+![image](images/bpmn.svg)
+
+
+![image](images/physical.svg)
 
 **Patterns Used:**
 
