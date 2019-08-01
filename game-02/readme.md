@@ -20,10 +20,15 @@ Be sure to answer this question by outlining the concepts used to tackle the pro
 
 ## Solution
 
-![image](images/architecture.svg)
+# Classes Diagram
+
+![image](images/Architecture.svg)
+
+# Request Flow Diagram
 
 ![image](images/bpmn.svg)
 
+# Request Physical Diagram
 
 ![image](images/physical.svg)
 
